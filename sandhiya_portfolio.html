@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandhiya Devandhiran | BBA Portfolio</title>
+<meta name="description" content="Sandhiya Devandhiran – BBA Student, Business Management Aspirant & Digital Marketing Enthusiast from Tamil Nadu, India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+  --royal: #0A66C2;
+  --navy: #081C3A;
+  --sky: #4DA6FF;
+  --electric: #1E90FF;
+  --white: #FFFFFF;
+  --gray: #F5F7FA;
+  --mid-gray: #B0BEC5;
+  --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  --bg: #060E1F;
+  --bg2: #081C3A;
+  --bg3: #0A2344;
+  --surface: rgba(10, 35, 80, 0.6);
+  --surface2: rgba(30, 144, 255, 0.08);
+  --text: #E8F0FE;
+  --text2: #94A3B8;
+  --border: rgba(77, 166, 255, 0.2);
+  --glow: rgba(30, 144, 255, 0.4);
+  --card-bg: rgba(8, 28, 58, 0.7);
+  --nav-bg: rgba(6, 14, 31, 0.92);
+  --hero-grad: linear-gradient(135deg, #060E1F 0%, #081C3A 50%, #0A2A5C 100%);
+}
+
+[data-theme="light"] {
+  --bg: #F5F7FA;
+  --bg2: #FFFFFF;
+  --bg3: #EBF4FF;
+  --surface: rgba(255, 255, 255, 0.7);
+  --surface2: rgba(10, 102, 194, 0.06);
+  --text: #0D1B2E;
+  --text2: #4A5568;
+  --border: rgba(10, 102, 194, 0.2);
+  --glow: rgba(10, 102, 194, 0.2);
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --nav-bg: rgba(245, 247, 250, 0.95);
+  --hero-grad: linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 50%, #BFDBFE 100%);
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background var(--transition), color var(--transition);
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* ===== LOADING SCREEN ===== */
+#loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #060E1F;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+#loader.hide { opacity: 0; visibility: hidden; }
+.loader-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem; font-weight: 700;
+  color: #4DA6FF;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  animation: pulse 1.5s ease infinite;
+}
+.loader-bar {
+  width: 200px; height: 3px;
+  background: rgba(77, 166, 255, 0.2);
+  border-radius: 99px; overflow: hidden;
+}
+.loader-fill {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, #0A66C2, #4DA6FF);
+  border-radius: 99px;
+  animation: load 1.8s ease forwards;
+}
+@keyframes load { to { width: 100%; } }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+/* ===== SCROLL PROGRESS ===== */
+#progress-bar {
+  position: fixed; top: 0; left: 0; z-index: 1001;
+  height: 3px; width: 0%;
+  background: linear-gradient(90deg, #0A66C2, #4DA6FF, #1E90FF);
+  transition: width 0.1s;
+  box-shadow: 0 0 8px rgba(77,166,255,0.6);
+}
+
+/* ===== PARTICLES CANVAS ===== */
+#particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 1rem 2rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all var(--transition);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 700;
+  background: linear-gradient(135deg, var(--royal), var(--sky));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a {
+  font-size: 0.875rem; font-weight: 500;
+  color: var(--text2);
+  position: relative;
+  transition: color var(--transition);
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--electric);
+  transition: width var(--transition);
+  border-radius: 2px;
+}
+.nav-links a:hover { color: var(--sky); }
+.nav-links a:hover::after { width: 100%; }
+.nav-actions { display: flex; align-items: center; gap: 1rem; }
+
+/* Theme Toggle */
+.theme-toggle {
+  width: 52px; height: 26px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 99px; cursor: pointer;
+  position: relative; transition: all var(--transition);
+}
+.theme-toggle::before {
+  content: ''; position: absolute;
+  top: 3px; left: 3px;
+  width: 18px; height: 18px;
+  background: linear-gradient(135deg, var(--royal), var(--sky));
+  border-radius: 50%;
+  transition: transform var(--transition);
+  box-shadow: 0 0 8px var(--glow);
+}
+[data-theme="light"] .theme-toggle::before { transform: translateX(26px); }
+.theme-icon { font-size: 0.75rem; position: absolute; top: 50%; transform: translateY(-50%); }
+.theme-icon.moon { left: 7px; color: var(--sky); }
+.theme-icon.sun { right: 7px; color: #F59E0B; }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--text); border-radius: 2px;
+  transition: all var(--transition);
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  position: fixed; top: 64px; left: 0; right: 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  flex-direction: column; gap: 1.2rem;
+  z-index: 999;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 1rem; font-weight: 500; color: var(--text2); padding: 0.4rem 0; }
+
+/* ===== SECTIONS WRAPPER ===== */
+.section { position: relative; z-index: 1; }
+
+/* ===== HERO ===== */
+#hero {
+  min-height: 100vh;
+  background: var(--hero-grad);
+  display: flex; align-items: center;
+  padding: 7rem 2rem 4rem;
+  position: relative; overflow: hidden;
+}
+.hero-blob {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); opacity: 0.15; pointer-events: none;
+}
+.hero-blob-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #1E90FF, transparent);
+  top: -200px; right: -100px;
+  animation: float1 8s ease-in-out infinite;
+}
+.hero-blob-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #0A66C2, transparent);
+  bottom: -150px; left: -100px;
+  animation: float2 10s ease-in-out infinite;
+}
+@keyframes float1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-30px,30px) scale(1.05)} }
+@keyframes float2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(30px,-20px) scale(1.08)} }
+
+.hero-inner {
+  max-width: 1200px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.hero-content { z-index: 2; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--sky);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 0.4rem 1rem; border-radius: 99px;
+  margin-bottom: 1.5rem;
+}
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 900; line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.hero-name span {
+  background: linear-gradient(135deg, var(--sky), var(--electric));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-typing-wrap {
+  font-size: 1.1rem; font-weight: 400;
+  color: var(--text2); margin-bottom: 1.5rem;
+  min-height: 1.8rem;
+}
+.typing-cursor {
+  display: inline-block; width: 2px; height: 1.1em;
+  background: var(--sky); margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.hero-bio {
+  font-size: 0.95rem; color: var(--text2);
+  max-width: 480px; line-height: 1.75;
+  margin-bottom: 2.5rem;
+}
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+  cursor: pointer; border: none;
+  transition: all var(--transition);
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--royal), var(--electric));
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(30,144,255,0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(30,144,255,0.5);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--sky);
+  border: 1.5px solid var(--sky);
+}
+.btn-outline:hover {
+  background: rgba(77,166,255,0.1);
+  transform: translateY(-2px);
+}
+.hero-socials { display: flex; gap: 1rem; }
+.social-icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--sky); font-size: 1rem;
+  transition: all var(--transition);
+}
+.social-icon:hover {
+  background: var(--royal);
+  border-color: var(--royal);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(10,102,194,0.4);
+}
+
+/* Hero photo */
+.hero-photo-wrap {
+  display: flex; justify-content: center; align-items: center;
+  position: relative;
+}
+.hero-photo-ring {
+  position: relative;
+  width: 320px; height: 320px;
+}
+.hero-photo-ring::before {
+  content: '';
+  position: absolute; inset: -12px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--royal), var(--sky), var(--electric), var(--royal));
+  animation: spin 8s linear infinite;
+  z-index: 1;
+}
+.hero-photo-ring::after {
+  content: '';
+  position: absolute; inset: -2px;
+  border-radius: 50%;
+  background: var(--bg2);
+  z-index: 2;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.hero-photo {
+  position: relative; z-index: 3;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-photo-placeholder {
+  position: relative; z-index: 3;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy), var(--bg3));
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0.5rem;
+  font-size: 5rem; color: var(--sky);
+  box-shadow: 0 0 60px rgba(77,166,255,0.2), inset 0 0 60px rgba(30,144,255,0.05);
+}
+.hero-photo-placeholder span {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 700;
+  color: var(--sky); letter-spacing: 0.1em;
+}
+.glow-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  animation: expand 3s ease-out infinite;
+  pointer-events: none;
+}
+.glow-ring:nth-child(1) { inset: -30px; animation-delay: 0s; }
+.glow-ring:nth-child(2) { inset: -50px; animation-delay: 1s; }
+.glow-ring:nth-child(3) { inset: -70px; animation-delay: 2s; }
+@keyframes expand { 0%{opacity:0.4} 100%{opacity:0} }
+
+/* ===== SECTION COMMON ===== */
+.section-wrap { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; }
+.section-label {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--sky);
+  margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700; margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.section-title span {
+  background: linear-gradient(135deg, var(--royal), var(--sky));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-line {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, var(--royal), var(--sky));
+  border-radius: 99px; margin-bottom: 3rem;
+}
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 0 2rem;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all var(--transition);
+}
+.glass-card:hover {
+  border-color: rgba(77,166,255,0.4);
+  box-shadow: 0 8px 40px rgba(30,144,255,0.12);
+  transform: translateY(-4px);
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-left {
+  opacity: 0; transform: translateX(-32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-left.visible { opacity: 1; transform: none; }
+.reveal-right {
+  opacity: 0; transform: translateX(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-right.visible { opacity: 1; transform: none; }
+
+/* ===== ABOUT ===== */
+#about { background: var(--bg2); }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start;
+}
+.about-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  margin-top: 2rem;
+}
+.stat-card {
+  padding: 1.5rem;
+  text-align: center;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.stat-card .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 700;
+  background: linear-gradient(135deg, var(--royal), var(--sky));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-card .lbl { font-size: 0.8rem; color: var(--text2); margin-top: 0.25rem; }
+.about-text p {
+  color: var(--text2); margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.8;
+}
+.trait-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.trait-tag {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0.5rem 1rem;
+  font-size: 0.85rem; font-weight: 500; color: var(--sky);
+  transition: all var(--transition);
+}
+.trait-tag:hover {
+  background: rgba(10,102,194,0.2);
+  border-color: var(--sky);
+  transform: scale(1.03);
+}
+
+/* Summary banner */
+.summary-banner {
+  padding: 3rem;
+  background: linear-gradient(135deg, rgba(10,102,194,0.15), rgba(30,144,255,0.08));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  position: relative; overflow: hidden;
+  margin-top: 3rem;
+}
+.summary-banner::before {
+  content: '"';
+  font-family: 'Playfair Display', serif;
+  font-size: 10rem; line-height: 1;
+  color: var(--royal); opacity: 0.12;
+  position: absolute; top: -1rem; left: 1rem;
+  pointer-events: none;
+}
+.summary-banner p {
+  font-size: 1rem; color: var(--text2);
+  line-height: 1.85; position: relative; z-index: 1;
+  font-style: italic;
+}
+
+/* ===== EDUCATION TIMELINE ===== */
+#education { background: var(--bg); }
+.timeline { position: relative; padding-left: 2.5rem; }
+.timeline::before {
+  content: '';
+  position: absolute; left: 12px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--royal), var(--sky), transparent);
+  border-radius: 2px;
+}
+.timeline-item {
+  position: relative; margin-bottom: 2rem;
+}
+.timeline-dot {
+  position: absolute; left: -2.1rem; top: 0.25rem;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--royal);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 12px var(--glow);
+  z-index: 2;
+}
+.edu-card {
+  padding: 2rem;
+}
+.edu-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.edu-meta {
+  font-size: 0.8rem; color: var(--sky); font-weight: 600;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.subject-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+.pill {
+  font-size: 0.78rem; font-weight: 500;
+  background: rgba(30,144,255,0.12);
+  border: 1px solid rgba(77,166,255,0.3);
+  color: var(--sky); border-radius: 99px;
+  padding: 0.3rem 0.8rem;
+}
+.outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.outcome-item {
+  display: flex; align-items: flex-start; gap: 0.5rem;
+  font-size: 0.85rem; color: var(--text2);
+}
+.outcome-item i { color: var(--royal); margin-top: 2px; flex-shrink: 0; }
+
+/* ===== INTERNSHIP ===== */
+#internship { background: var(--bg2); }
+.intern-card { padding: 2.5rem; }
+.intern-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;
+}
+.intern-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: linear-gradient(135deg, var(--royal), var(--electric));
+  color: #fff; border-radius: 99px;
+  padding: 0.4rem 1rem; font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.intern-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 0.25rem; }
+.intern-company { color: var(--sky); font-weight: 600; font-size: 1rem; }
+.intern-meta { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+.intern-meta-item {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-size: 0.85rem; color: var(--text2);
+}
+.intern-meta-item i { color: var(--sky); font-size: 0.8rem; }
+.intern-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.intern-section h4 {
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--sky);
+  margin-bottom: 1rem;
+}
+.intern-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.intern-list li {
+  display: flex; align-items: flex-start; gap: 0.5rem;
+  font-size: 0.875rem; color: var(--text2);
+}
+.intern-list li i { color: var(--royal); margin-top: 2px; flex-shrink: 0; }
+.skills-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip {
+  font-size: 0.8rem; font-weight: 600;
+  padding: 0.4rem 0.9rem; border-radius: 8px;
+  background: linear-gradient(135deg, rgba(10,102,194,0.2), rgba(30,144,255,0.1));
+  border: 1px solid rgba(77,166,255,0.3);
+  color: var(--sky);
+  transition: all var(--transition);
+}
+.chip:hover {
+  background: var(--royal); color: #fff;
+  border-color: var(--royal);
+  transform: scale(1.03);
+}
+.intern-highlight {
+  margin-top: 2rem; padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.intern-highlight-inner {
+  display: flex; align-items: flex-start; gap: 1rem;
+  background: linear-gradient(135deg, rgba(10,102,194,0.1), rgba(77,166,255,0.05));
+  border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.25rem;
+}
+.intern-highlight-inner i { color: var(--sky); font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
+.intern-highlight-inner p { font-size: 0.9rem; color: var(--text2); line-height: 1.7; }
+
+/* ===== SKILLS ===== */
+#skills { background: var(--bg); }
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.skill-group { padding: 2rem; }
+.skill-group-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.25rem; color: #fff; margin-bottom: 1.25rem;
+}
+.skill-group-icon.biz { background: linear-gradient(135deg, #0A66C2, #1E90FF); }
+.skill-group-icon.tech { background: linear-gradient(135deg, #1E90FF, #4DA6FF); }
+.skill-group-icon.soft { background: linear-gradient(135deg, #0A44C2, #0A66C2); }
+.skill-group h3 {
+  font-size: 1rem; font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.skill-bar-wrap { margin-bottom: 1rem; }
+.skill-label-row {
+  display: flex; justify-content: space-between;
+  font-size: 0.8rem; margin-bottom: 0.35rem;
+}
+.skill-label-row span:first-child { color: var(--text2); font-weight: 500; }
+.skill-label-row span:last-child { color: var(--sky); font-weight: 600; }
+.skill-track {
+  height: 6px; background: var(--surface2);
+  border: 1px solid var(--border); border-radius: 99px; overflow: hidden;
+}
+.skill-fill {
+  height: 100%; border-radius: 99px; width: 0;
+  background: linear-gradient(90deg, var(--royal), var(--sky));
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 8px rgba(77,166,255,0.4);
+}
+
+/* ===== ACHIEVEMENTS ===== */
+#achievements { background: var(--bg2); }
+.achievement-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.achievement-card {
+  padding: 1.75rem;
+  display: flex; align-items: flex-start; gap: 1rem;
+}
+.ach-icon {
+  width: 48px; height: 48px; flex-shrink: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(10,102,194,0.2), rgba(30,144,255,0.1));
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--sky); font-size: 1.25rem;
+}
+.ach-text h4 { font-weight: 600; margin-bottom: 0.25rem; font-size: 0.95rem; }
+.ach-text p { font-size: 0.82rem; color: var(--text2); line-height: 1.5; }
+
+/* ===== LANGUAGES & HOBBIES ===== */
+#lang-hobbies { background: var(--bg); }
+.lh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.lang-cards { display: flex; flex-direction: column; gap: 1rem; }
+.lang-card {
+  display: flex; align-items: center; gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+}
+.lang-flag {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--royal), var(--sky));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; flex-shrink: 0;
+}
+.lang-info h4 { font-weight: 600; margin-bottom: 0.1rem; }
+.lang-info span { font-size: 0.8rem; color: var(--sky); }
+.hobby-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.hobby-card {
+  padding: 1.25rem; text-align: center;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all var(--transition);
+}
+.hobby-card:hover {
+  background: rgba(10,102,194,0.2);
+  border-color: var(--sky);
+  transform: translateY(-3px);
+}
+.hobby-card i { font-size: 1.5rem; color: var(--sky); margin-bottom: 0.5rem; display: block; }
+.hobby-card span { font-size: 0.78rem; color: var(--text2); font-weight: 500; }
+
+/* ===== CONTACT ===== */
+#contact { background: var(--bg2); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+.contact-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; margin-bottom: 1rem;
+}
+.contact-info p { color: var(--text2); line-height: 1.7; margin-bottom: 2rem; font-size: 0.95rem; }
+.contact-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.25rem; margin-bottom: 0.75rem;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all var(--transition);
+}
+.contact-item:hover { border-color: var(--sky); transform: translateX(4px); }
+.contact-item-icon {
+  width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px;
+  background: linear-gradient(135deg, var(--royal), var(--electric));
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 0.9rem;
+}
+.contact-item-text span { font-size: 0.75rem; color: var(--text2); display: block; }
+.contact-item-text a { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+.contact-item-text a:hover { color: var(--sky); }
+.contact-socials { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+
+/* Contact form */
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label { font-size: 0.8rem; font-weight: 600; color: var(--text2); letter-spacing: 0.05em; text-transform: uppercase; }
+.form-group input, .form-group textarea {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 0.85rem 1rem;
+  color: var(--text); font-family: 'Inter', sans-serif;
+  font-size: 0.9rem; resize: none;
+  transition: all var(--transition);
+  outline: none;
+}
+.form-group input:focus, .form-group textarea:focus {
+  border-color: var(--sky);
+  box-shadow: 0 0 0 3px rgba(77,166,255,0.1);
+}
+.form-group input::placeholder, .form-group textarea::placeholder { color: var(--text2); opacity: 0.6; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-success {
+  display: none; text-align: center;
+  padding: 2rem; color: #4ade80; font-size: 1rem; font-weight: 600;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 4rem 2rem 2rem;
+  position: relative; z-index: 1;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+  margin-bottom: 3rem;
+}
+.footer-brand .nav-logo { font-size: 1.6rem; margin-bottom: 0.75rem; display: inline-block; }
+.footer-brand p { font-size: 0.875rem; color: var(--text2); line-height: 1.7; max-width: 300px; }
+.footer-socials { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+.footer-col h4 {
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--sky);
+  margin-bottom: 1rem;
+}
+.footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-links a {
+  font-size: 0.875rem; color: var(--text2);
+  transition: color var(--transition);
+}
+.footer-links a:hover { color: var(--sky); }
+.footer-contact-item {
+  display: flex; align-items: flex-start; gap: 0.5rem;
+  font-size: 0.85rem; color: var(--text2); margin-bottom: 0.5rem;
+}
+.footer-contact-item i { color: var(--sky); margin-top: 2px; flex-shrink: 0; }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+}
+.footer-bottom p { font-size: 0.8rem; color: var(--text2); }
+.footer-bottom span { color: var(--sky); }
+
+/* ===== BACK TO TOP ===== */
+#back-top {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 500;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--royal), var(--electric));
+  color: #fff; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  opacity: 0; pointer-events: none;
+  transform: translateY(10px);
+  transition: all var(--transition);
+  box-shadow: 0 4px 20px rgba(10,102,194,0.4);
+}
+#back-top.show { opacity: 1; pointer-events: all; transform: translateY(0); }
+#back-top:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(10,102,194,0.6); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+  .hero-photo-wrap { order: -1; }
+  .hero-cta { justify-content: center; }
+  .hero-socials { justify-content: center; }
+  .hero-bio { margin: 0 auto 2.5rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .intern-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .lh-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .hero-photo-ring { width: 240px; height: 240px; }
+  .hero-photo-placeholder { width: 220px; height: 220px; }
+  .outcome-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="loader">
+  <div class="loader-logo">SD</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- Scroll Progress -->
+<div id="progress-bar"></div>
+
+<!-- Particle Canvas -->
+<canvas id="particles"></canvas>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">Sandhiya<span style="color:var(--sky)">.</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#internship">Internship</a>
+    <a href="#skills">Skills</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <i class="fas fa-moon theme-icon moon"></i>
+      <i class="fas fa-sun theme-icon sun"></i>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#education" onclick="closeMobile()">Education</a>
+  <a href="#internship" onclick="closeMobile()">Internship</a>
+  <a href="#skills" onclick="closeMobile()">Skills</a>
+  <a href="#achievements" onclick="closeMobile()">Achievements</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero" class="section">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow reveal">
+        <i class="fas fa-circle" style="font-size:0.4rem;color:#4ade80;"></i>
+        Available for Internships
+      </div>
+      <h1 class="hero-name reveal">
+        Hi, I'm<br><span>Sandhiya Devandhiran</span>
+      </h1>
+      <div class="hero-typing-wrap reveal">
+        <span id="typing-text"></span><span class="typing-cursor"></span>
+      </div>
+      <p class="hero-bio reveal">
+        Passionate and dedicated BBA student with strong analytical, communication, leadership, and problem-solving abilities. Enthusiastic about business management, marketing, and digital transformation.
+      </p>
+      <div class="hero-cta reveal">
+        <a href="#contact" class="btn btn-primary">
+          <i class="fas fa-paper-plane"></i> Get in Touch
+        </a>
+        <a href="#about" class="btn btn-outline">
+          <i class="fas fa-user"></i> About Me
+        </a>
+      </div>
+      <div class="hero-socials reveal">
+        <a href="mailto:sandhiyadhanam78@gmail.com" class="social-icon" aria-label="Email" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="tel:+919788236204" class="social-icon" aria-label="Phone" title="Phone">
+          <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/sandhiya-devandhiran" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap reveal-right">
+      <div class="hero-photo-ring">
+        <div class="glow-ring"></div>
+        <div class="glow-ring"></div>
+        <div class="glow-ring"></div>
+        <div class="hero-photo-placeholder">
+          <i class="fas fa-user"></i>
+          <span>SD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-wrap">
+    <div class="about-grid">
+      <div>
+        <p class="section-label reveal">Who I Am</p>
+        <h2 class="section-title reveal">About <span>Me</span></h2>
+        <div class="section-line reveal"></div>
+        <div class="about-stats">
+          <div class="stat-card reveal glass-card">
+            <div class="num">BBA</div>
+            <div class="lbl">Degree Program</div>
+          </div>
+          <div class="stat-card reveal glass-card" style="transition-delay:0.1s">
+            <div class="num">15+</div>
+            <div class="lbl">Days Industry Exp.</div>
+          </div>
+          <div class="stat-card reveal glass-card" style="transition-delay:0.2s">
+            <div class="num">6+</div>
+            <div class="lbl">Core Subjects</div>
+          </div>
+          <div class="stat-card reveal glass-card" style="transition-delay:0.3s">
+            <div class="num">∞</div>
+            <div class="lbl">Growth Mindset</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="about-text reveal-right">
+          <p>I am <strong>Sandhiya Devandhiran</strong>, a Bachelor of Business Administration student at Sangamam Arts and Science College, Panruti, Tamil Nadu. My academic journey has equipped me with a robust foundation across business management, financial accounting, marketing principles, and organizational behavior.</p>
+          <p>I believe that the intersection of business strategy and digital innovation is where the most exciting opportunities lie. My recent internship at <strong>Blastout Solutions</strong> reinforced this conviction, giving me hands-on exposure to real-world digital marketing campaigns and brand promotion.</p>
+          <p>I aspire to build a career as a future business leader — one who is analytically sharp, communicatively effective, and constantly learning. I'm driven by curiosity, motivated by challenges, and committed to excellence in everything I undertake.</p>
+          <div class="trait-grid">
+            <span class="trait-tag"><i class="fas fa-brain"></i> Analytical Thinker</span>
+            <span class="trait-tag"><i class="fas fa-users"></i> Team Player</span>
+            <span class="trait-tag"><i class="fas fa-lightbulb"></i> Problem Solver</span>
+            <span class="trait-tag"><i class="fas fa-chart-line"></i> Growth Mindset</span>
+            <span class="trait-tag"><i class="fas fa-comments"></i> Communicator</span>
+            <span class="trait-tag"><i class="fas fa-star"></i> Leader</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="summary-banner reveal">
+      <p>Results-driven and highly motivated BBA student with a strong foundation in business management, financial accounting, marketing principles, and organizational behavior. Skilled in communication, teamwork, leadership, customer service, and analytical thinking. Passionate about continuous learning and applying business concepts to real-world challenges.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
+<section id="education" class="section">
+  <div class="section-wrap">
+    <p class="section-label reveal">Academic Journey</p>
+    <h2 class="section-title reveal">My <span>Education</span></h2>
+    <div class="section-line reveal"></div>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="edu-card glass-card">
+          <h3>Bachelor of Business Administration (BBA)</h3>
+          <p class="edu-meta">Sangamam Arts and Science College, Panruti &nbsp;·&nbsp; In Progress</p>
+          <p style="font-size:0.85rem;color:var(--text2);margin-bottom:1.25rem;line-height:1.7;">A comprehensive undergraduate program developing analytical, managerial, and entrepreneurial capabilities across core business disciplines.</p>
+          <div class="subject-pills">
+            <span class="pill">Business Management</span>
+            <span class="pill">Financial Accounting</span>
+            <span class="pill">Marketing Principles</span>
+            <span class="pill">Business Law</span>
+            <span class="pill">Organizational Behavior</span>
+          </div>
+          <h4 style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--sky);margin-bottom:0.75rem;">Key Learning Outcomes</h4>
+          <div class="outcome-grid">
+            <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Analytical &amp; decision-making skills</span></div>
+            <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Practical market research exposure</span></div>
+            <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Financial analysis experience</span></div>
+            <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Strategic planning knowledge</span></div>
+            <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Leadership development</span></div>
+            <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Business communication skills</span></div>
+            <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Microsoft Excel proficiency</span></div>
+            <div class="outcome-item"><i class="fas fa-check-circle"></i><span>Problem-solving abilities</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- INTERNSHIP -->
+<section id="internship" class="section">
+  <div class="section-wrap">
+    <p class="section-label reveal">Real-World Experience</p>
+    <h2 class="section-title reveal">Internship <span>Experience</span></h2>
+    <div class="section-line reveal"></div>
+    <div class="intern-card glass-card reveal">
+      <div class="intern-header">
+        <div>
+          <span class="intern-badge"><i class="fas fa-briefcase"></i> Completed</span>
+          <h3 class="intern-title" style="margin-top:0.75rem;">Digital Marketing Intern</h3>
+          <p class="intern-company">Blastout Solutions</p>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,var(--royal),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">15 Days</div>
+          <div style="font-size:0.8rem;color:var(--text2);">Internship Duration</div>
+        </div>
+      </div>
+      <div class="intern-meta">
+        <div class="intern-meta-item"><i class="fas fa-calendar"></i> June 2026</div>
+        <div class="intern-meta-item"><i class="fas fa-map-marker-alt"></i> Industry Exposure</div>
+        <div class="intern-meta-item"><i class="fas fa-certificate"></i> Certified Completion</div>
+      </div>
+      <div class="intern-grid">
+        <div class="intern-section">
+          <h4><i class="fas fa-tasks" style="margin-right:0.4rem;"></i>Responsibilities</h4>
+          <ul class="intern-list">
+            <li><i class="fas fa-angle-right"></i>Assisted in digital marketing campaigns</li>
+            <li><i class="fas fa-angle-right"></i>Participated in social media marketing activities</li>
+            <li><i class="fas fa-angle-right"></i>Supported content creation initiatives</li>
+            <li><i class="fas fa-angle-right"></i>Monitored audience engagement metrics</li>
+            <li><i class="fas fa-angle-right"></i>Learned digital marketing strategies &amp; tools</li>
+            <li><i class="fas fa-angle-right"></i>Assisted in brand promotion activities</li>
+          </ul>
+        </div>
+        <div class="intern-section">
+          <h4><i class="fas fa-bolt" style="margin-right:0.4rem;"></i>Skills Gained</h4>
+          <div class="skills-chips">
+            <span class="chip">Digital Marketing</span>
+            <span class="chip">Social Media</span>
+            <span class="chip">Content Marketing</span>
+            <span class="chip">Campaign Analysis</span>
+            <span class="chip">Audience Engagement</span>
+            <span class="chip">Digital Branding</span>
+            <span class="chip">Marketing Analytics</span>
+          </div>
+        </div>
+      </div>
+      <div class="intern-highlight">
+        <div class="intern-highlight-inner">
+          <i class="fas fa-trophy"></i>
+          <p>Successfully completed a 15-day Digital Marketing Internship at Blastout Solutions in June 2026, gaining practical industry exposure and hands-on experience in digital marketing campaigns and online brand promotion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="section-wrap">
+    <p class="section-label reveal">What I Bring</p>
+    <h2 class="section-title reveal">My <span>Skills</span></h2>
+    <div class="section-line reveal"></div>
+    <div class="skills-grid">
+      <div class="skill-group glass-card reveal">
+        <div class="skill-group-icon biz"><i class="fas fa-briefcase"></i></div>
+        <h3>Business Skills</h3>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Business Management</span><span>88%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Strategic Planning</span><span>82%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="82"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Financial Analysis</span><span>80%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="80"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Market Research</span><span>85%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Project Management</span><span>78%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="78"></div></div>
+        </div>
+      </div>
+      <div class="skill-group glass-card reveal" style="transition-delay:0.15s">
+        <div class="skill-group-icon tech"><i class="fas fa-laptop-code"></i></div>
+        <h3>Technical Skills</h3>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Microsoft Excel</span><span>84%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="84"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Data Analysis</span><span>78%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="78"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Presentation Skills</span><span>90%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Digital Marketing</span><span>82%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="82"></div></div>
+        </div>
+      </div>
+      <div class="skill-group glass-card reveal" style="transition-delay:0.3s">
+        <div class="skill-group-icon soft"><i class="fas fa-heart"></i></div>
+        <h3>Soft Skills</h3>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Communication</span><span>92%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="92"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Teamwork</span><span>95%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Leadership</span><span>85%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Problem Solving</span><span>88%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-label-row"><span>Time Management</span><span>87%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="87"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="section">
+  <div class="section-wrap">
+    <p class="section-label reveal">Milestones</p>
+    <h2 class="section-title reveal">Key <span>Achievements</span></h2>
+    <div class="section-line reveal"></div>
+    <div class="achievement-grid">
+      <div class="achievement-card glass-card reveal">
+        <div class="ach-icon"><i class="fas fa-trophy"></i></div>
+        <div class="ach-text">
+          <h4>Digital Marketing Internship</h4>
+          <p>Successfully completed a professional internship at Blastout Solutions, gaining real-world digital marketing experience.</p>
+        </div>
+      </div>
+      <div class="achievement-card glass-card reveal" style="transition-delay:0.1s">
+        <div class="ach-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="ach-text">
+          <h4>BBA Academic Excellence</h4>
+          <p>Developed strong business and analytical skills through a rigorous BBA coursework program across core management disciplines.</p>
+        </div>
+      </div>
+      <div class="achievement-card glass-card reveal" style="transition-delay:0.2s">
+        <div class="ach-icon"><i class="fas fa-presentation"></i></div>
+        <div class="ach-text">
+          <h4>Academic Projects &amp; Presentations</h4>
+          <p>Actively participated in academic projects, case studies, and presentations, building public speaking and analytical abilities.</p>
+        </div>
+      </div>
+      <div class="achievement-card glass-card reveal" style="transition-delay:0.3s">
+        <div class="ach-icon"><i class="fas fa-users"></i></div>
+        <div class="ach-text">
+          <h4>Leadership &amp; Communication</h4>
+          <p>Strengthened leadership and communication capabilities through academic engagement, group projects, and extracurricular activities.</p>
+        </div>
+      </div>
+      <div class="achievement-card glass-card reveal" style="transition-delay:0.4s">
+        <div class="ach-icon"><i class="fas fa-chart-bar"></i></div>
+        <div class="ach-text">
+          <h4>Management &amp; Marketing Foundation</h4>
+          <p>Built a solid, comprehensive foundation in management principles, marketing concepts, and business strategy through academic study.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- LANGUAGES & HOBBIES -->
+<section id="lang-hobbies" class="section">
+  <div class="section-wrap">
+    <div class="lh-grid">
+      <div>
+        <p class="section-label reveal">Communication</p>
+        <h2 class="section-title reveal" style="font-size:2rem;">Languages</h2>
+        <div class="section-line reveal"></div>
+        <div class="lang-cards">
+          <div class="lang-card glass-card reveal">
+            <div class="lang-flag">🇮🇳</div>
+            <div class="lang-info">
+              <h4>Tamil</h4>
+              <span>Native Language — Fluent</span>
+            </div>
+          </div>
+          <div class="lang-card glass-card reveal" style="transition-delay:0.15s">
+            <div class="lang-flag">🇬🇧</div>
+            <div class="lang-info">
+              <h4>English</h4>
+              <span>Working Knowledge — Proficient</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label reveal">What I Love</p>
+        <h2 class="section-title reveal" style="font-size:2rem;">Hobbies &amp; Interests</h2>
+        <div class="section-line reveal"></div>
+        <div class="hobby-grid">
+          <div class="hobby-card reveal"><i class="fas fa-book-open"></i><span>Reading</span></div>
+          <div class="hobby-card reveal" style="transition-delay:0.1s"><i class="fas fa-rocket"></i><span>Smart Working</span></div>
+          <div class="hobby-card reveal" style="transition-delay:0.2s"><i class="fas fa-graduation-cap"></i><span>Learning New Skills</span></div>
+          <div class="hobby-card reveal" style="transition-delay:0.3s"><i class="fas fa-search-dollar"></i><span>Business Research</span></div>
+          <div class="hobby-card reveal" style="transition-delay:0.4s"><i class="fas fa-seedling"></i><span>Personal Development</span></div>
+          <div class="hobby-card reveal" style="transition-delay:0.5s"><i class="fas fa-bullhorn"></i><span>Marketing Trends</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="section-wrap">
+    <p class="section-label reveal" style="text-align:center;">Let's Talk</p>
+    <h2 class="section-title reveal" style="text-align:center;">Get in <span>Touch</span></h2>
+    <div class="section-line reveal" style="margin:0 auto 3rem;"></div>
+    <p class="reveal" style="text-align:center;color:var(--text2);max-width:540px;margin:0 auto 3rem;font-size:0.95rem;line-height:1.75;">Let's Connect and Build Opportunities Together — I am always open to internships, networking opportunities, business collaborations, and professional growth discussions.</p>
+    <div class="contact-grid">
+      <div>
+        <h3 class="reveal" style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:0.75rem;">Contact <span style="background:linear-gradient(135deg,var(--royal),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Information</span></h3>
+        <p class="reveal" style="color:var(--text2);line-height:1.7;margin-bottom:1.75rem;font-size:0.9rem;">Feel free to reach out through any of the channels below. I typically respond within 24 hours and look forward to meaningful conversations.</p>
+        <div class="contact-item reveal">
+          <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+          <div class="contact-item-text">
+            <span>Email</span>
+            <a href="mailto:sandhiyadhanam78@gmail.com">sandhiyadhanam78@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item reveal" style="transition-delay:0.1s">
+          <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+          <div class="contact-item-text">
+            <span>Phone</span>
+            <a href="tel:+919788236204">+91 9788 236 204</a>
+          </div>
+        </div>
+        <div class="contact-item reveal" style="transition-delay:0.2s">
+          <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="contact-item-text">
+            <span>Location</span>
+            <a>Chithambaram, Tamil Nadu, India</a>
+          </div>
+        </div>
+        <div class="contact-socials reveal" style="transition-delay:0.3s">
+          <a href="mailto:sandhiyadhanam78@gmail.com" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="tel:+919788236204" class="social-icon" title="Phone"><i class="fas fa-phone"></i></a>
+          <a href="https://www.linkedin.com/in/sandhiya-devandhiran" target="_blank" rel="noopener" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="glass-card reveal-right" style="padding:2rem;">
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:1.5rem;">Send a Message</h4>
+          <div class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="Your first name">
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Your last name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <input type="text" placeholder="Internship / Collaboration / Networking…">
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea rows="5" placeholder="Write your message here…"></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="submitForm()" style="width:100%;justify-content:center;">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <i class="fas fa-check-circle" style="font-size:2.5rem;margin-bottom:0.75rem;display:block;color:#4ade80;"></i>
+            Message noted! Sandhiya will get back to you soon.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo">Sandhiya<span style="color:var(--sky)">.</span></div>
+      <p>BBA Student · Business Management Aspirant · Digital Marketing Enthusiast. Based in Tamil Nadu, India. Open to internships and professional opportunities.</p>
+      <div class="footer-socials">
+        <a href="mailto:sandhiyadhanam78@gmail.com" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="tel:+919788236204" class="social-icon" title="Phone"><i class="fas fa-phone"></i></a>
+        <a href="https://www.linkedin.com/in/sandhiya-devandhiran" target="_blank" rel="noopener" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <div class="footer-links">
+        <a href="#about">About Me</a>
+        <a href="#education">Education</a>
+        <a href="#internship">Internship</a>
+        <a href="#skills">Skills</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item"><i class="fas fa-envelope"></i>sandhiyadhanam78@gmail.com</div>
+      <div class="footer-contact-item"><i class="fas fa-phone"></i>+91 9788 236 204</div>
+      <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i>Chithambaram, Tamil Nadu</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span>Sandhiya Devandhiran</span>. All Rights Reserved.</p>
+    <p>Designed with <span>♥</span> for professional excellence.</p>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+// ===== LOADER =====
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hide'), 2000);
+});
+
+// ===== THEME TOGGLE =====
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  const html = document.documentElement;
+  html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+});
+
+// ===== HAMBURGER =====
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+function closeMobile() { mobileMenu.classList.remove('open'); }
+
+// ===== SCROLL PROGRESS =====
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY / (document.documentElement.scrollHeight - innerHeight) * 100;
+  document.getElementById('progress-bar').style.width = scrolled + '%';
+  const backTop = document.getElementById('back-top');
+  window.scrollY > 400 ? backTop.classList.add('show') : backTop.classList.remove('show');
+});
+
+// ===== TYPING ANIMATION =====
+const phrases = [
+  'BBA Student',
+  'Future Business Leader',
+  'Digital Marketing Enthusiast',
+  'Strategic Thinker',
+  'Team Player & Leader'
+];
+let pi = 0, ci = 0, deleting = false;
+const typingEl = document.getElementById('typing-text');
+function type() {
+  const current = phrases[pi];
+  if (!deleting) {
+    typingEl.textContent = current.slice(0, ci + 1);
+    ci++;
+    if (ci === current.length) { deleting = true; setTimeout(type, 1600); return; }
+  } else {
+    typingEl.textContent = current.slice(0, ci - 1);
+    ci--;
+    if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(type, 300); return; }
+  }
+  setTimeout(type, deleting ? 55 : 85);
+}
+setTimeout(type, 1200);
+
+// ===== SCROLL REVEAL =====
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+
+// ===== SKILL BARS =====
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      skillObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skill-group').forEach(g => skillObserver.observe(g));
+
+// ===== CONTACT FORM =====
+function submitForm() {
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+// ===== PARTICLES =====
+(function() {
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particles = [], mouse = { x: 0, y: 0 };
+  function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * innerWidth;
+      this.y = Math.random() * innerHeight;
+      this.r = Math.random() * 1.5 + 0.5;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = (Math.random() - 0.5) * 0.3;
+      this.a = Math.random() * 0.5 + 0.1;
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy;
+      if (this.x < 0 || this.x > innerWidth || this.y < 0 || this.y > innerHeight) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(77,166,255,${this.a})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+  function connect() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(77,166,255,${0.08 * (1 - d / 120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    connect();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+</script>
+</body>
+</html>
